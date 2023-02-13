@@ -1,0 +1,3 @@
+interface para validar
+interface para separar a sopa e as palavras
+solução
