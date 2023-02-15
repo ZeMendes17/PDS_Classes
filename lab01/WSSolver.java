@@ -158,7 +158,7 @@ public class WSSolver implements VerificationInterface, InfoInterface {
             int c = 0;
             for (int i = 0; i<s.length(); i++)
             {
-                int j = s.indexOf("");
+                int j = s.indexOf(" ");
                 int m = s.indexOf(";");
                 if (s.charAt(i) == s.charAt(j) || s.charAt(i) == s.charAt(m)) {
                     Words.add(s.substring(c,i-1));
