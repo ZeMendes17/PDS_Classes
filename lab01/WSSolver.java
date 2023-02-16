@@ -11,6 +11,7 @@ public class WSSolver implements VerificationInterface, InfoInterface {
 
         // vai ler o args[0] para ler o ficheiro
         File file = new File(args[0]);
+        
         Scanner sc = new Scanner(file);
 
         int puzzleLineLength = 12; // mais tarde determinar dinamicamente
@@ -31,6 +32,21 @@ public class WSSolver implements VerificationInterface, InfoInterface {
             System.out.print("\n");
         }
 
+    }
+
+    private static boolean isStringUpperCase(String s){
+        
+        //convert String to char array
+        char[] charArray = s.toCharArray();
+        
+        for(char c : charArray){
+            
+            //if any character is not in upper case, return false
+            if(!Character.isUpperCase(c))
+                return false;
+        }
+        
+        return true;
     }
 
     @Override
@@ -91,21 +107,6 @@ public class WSSolver implements VerificationInterface, InfoInterface {
             return false;
         }
         
-    }
-
-    private static boolean isStringUpperCase(String s){
-        
-        //convert String to char array
-        char[] charArray = s.toCharArray();
-        
-        for(char c : charArray){
-            
-            //if any character is not in upper case, return false
-            if(!Character.isUpperCase(c))
-                return false;
-        }
-        
-        return true;
     }
 
     @Override
