@@ -2,9 +2,9 @@
 import java.util.Scanner;
 import java.io.File;
 
-public class WSSolver{
+public class WSSolver extends Verification{
     public static void main(String[] args) throws Exception {
-        String[] words =  {"Up", "Down", "Left", "Right", "UpLeft", "UpRight", "DownLeft", "DownRight"};
+        // String[] words =  {"Up", "Down", "Left", "Right", "UpLeft", "UpRight", "DownLeft", "DownRight"};
         char[][] puzzle = new char[40][40];
         int i;
 
@@ -32,8 +32,11 @@ public class WSSolver{
             System.out.print("\n");
         }
 
-    }
+        Verification verify = new Verification();
 
+        boolean a = verify.validateWordSearch(file); // so para saber como usar a seguir
+
+    }
 
         // try {
         //     System.out.println("Palavra " + words[20]);
