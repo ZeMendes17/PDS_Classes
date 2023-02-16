@@ -1,11 +1,8 @@
-import java.util.List;
-import java.util.ArrayList;
+
 import java.util.Scanner;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 
-public class WSSolver implements VerificationInterface, InfoInterface {
+public class WSSolver{
     public static void main(String[] args) throws Exception {
         String[] words =  {"Up", "Down", "Left", "Right", "UpLeft", "UpRight", "DownLeft", "DownRight"};
         char[][] puzzle = new char[40][40];
@@ -37,144 +34,7 @@ public class WSSolver implements VerificationInterface, InfoInterface {
 
     }
 
-    private static boolean isStringUpperCase(String s){
-        
-        //convert String to char array
-        char[] charArray = s.toCharArray();
-        
-        for(char c : charArray){
-            
-            //if any character is not in upper case, return false
-            if(!Character.isUpperCase(c))
-                return false;
-        }
-        
-        return true;
-    }
 
-    @Override
-    public boolean validateWordSearch(File f) {
-
-        try {
-            Scanner sc = new Scanner(f);
-            String tempLine = sc.nextLine();
-            if(tempLine == null || !isStringUpperCase(tempLine)){
-                sc.close();
-                return false;
-            }
-
-            int ws_lenght = tempLine.length();
-            for(int i = 1; i < ws_lenght; i++){
-                tempLine = sc.nextLine();
-                if(tempLine.length() != ws_lenght || !isStringUpperCase(tempLine)){
-                    sc.close();
-                    return false;
-                }
-            }
-            sc.close();
-            return true;
-
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-            return false;
-        }
-
-        
-    }
-
-    @Override
-    public boolean validateWords(File f) {
-        try {
-            Scanner sc = new Scanner(f);
-            String tempLine = sc.nextLine();
-            int ws_lenght = tempLine.length();
-            for(int i = 1; i < ws_lenght; i++)
-                tempLine = sc.nextLine();
-            
-            StringBuilder str = new StringBuilder();
-            while(sc.hasNextLine())
-                str.append(sc.nextLine());
-            sc.close();
-
-            String s = str.toString();
-
-            s = s.replace(" ", "");
-            s = s.replace(";", "");
-            
-            if(!s.matches("[a-zA-Z]+"))
-                return false;
-            return true;
-
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-            return false;
-        }
-        
-    }
-
-    @Override
-    public List<String> getWordSearch(File f) {
-        //todo Auto-generated method stub
-        try {
-            Scanner sc = new Scanner(f);
-            String tempLine = sc.nextLine();
-            int ws_lenght = tempLine.length();
-            List<String> WordSearch = new ArrayList<>(); 
-
-
-            for(int i = 1; i < ws_lenght; i++){
-                WordSearch.add(tempLine);
-                tempLine = sc.nextLine();
-            }
-
-            sc.close();
-            return WordSearch;
-        
-        }  catch (FileNotFoundException e) {
-            System.out.println("File not found");
-            return ;
-        }
-    }
-
-    @Override
-    public List<String> getWords(File f) {
-        //todo Auto-generated method stub
-        try {
-            Scanner sc = new Scanner(f);
-            String tempLine = sc.nextLine();
-            int ws_lenght = tempLine.length();
-            List<String> Words = new ArrayList<>(); 
-
-            for(int i = 1; i < ws_lenght; i++)
-                tempLine = sc.nextLine();
-            
-            StringBuilder str = new StringBuilder();
-            while(sc.hasNextLine())
-                str.append(sc.nextLine());
-            sc.close();
-
-            String s = str.toString();
-            
-
-            int c = 0;
-            for (int i = 0; i<s.length(); i++)
-            {
-                int j = s.indexOf(" ");
-                int m = s.indexOf(";");
-                if (s.charAt(i) == s.charAt(j) || s.charAt(i) == s.charAt(m)) {
-                    Words.add(s.substring(c,i-1));
-                    c = i+1;
-                }
-            }
-            return Words;
-        
-        }  catch (FileNotFoundException e) {
-            System.out.println("File not found");
-            return ;
-        }
-    }
-
-            
         // try {
         //     System.out.println("Palavra " + words[20]);
         // } catch (ArrayIndexOutOfBoundsException e) {
