@@ -7,23 +7,23 @@ import java.io.FileNotFoundException;
 public class ReadData implements InfoInterface {
     
     @Override
-    public List<String> getWordSearch(File f) {
+    public char[][] readWordSearch(File f) {
         //todo Auto-generated method stub
         try {
             Scanner sc = new Scanner(f);
             String tempLine = sc.nextLine();
             int ws_lenght = tempLine.length();
-            List<String> WordSearch = new ArrayList<>(); 
+            char[][] wordSearch = new char[ws_lenght][ws_lenght];
 
-
-            for(int i = 1; i < ws_lenght; i++){
-                WordSearch.add(tempLine);
+            wordSearch[0] = tempLine.toCharArray();
+            for(int line = 1; line < ws_lenght; line++){
                 tempLine = sc.nextLine();
+                wordSearch[line] = tempLine.toCharArray();
             }
 
             sc.close();
-            return WordSearch;
-        
+            return wordSearch;
+
         }  catch (FileNotFoundException e) {
             System.out.println("File not found");
             return null;
@@ -31,36 +31,35 @@ public class ReadData implements InfoInterface {
     }
 
     @Override
-    public List<String> getWords(File f) {
+    public List<String> readWords(File f) {
         //todo Auto-generated method stub
         try {
             Scanner sc = new Scanner(f);
             String tempLine = sc.nextLine();
             int ws_lenght = tempLine.length();
-            List<String> Words = new ArrayList<>(); 
+            List<String> words = new ArrayList<>(); 
+            String s;
 
             for(int i = 1; i < ws_lenght; i++)
                 tempLine = sc.nextLine();
             
             StringBuilder str = new StringBuilder();
-            while(sc.hasNextLine())
+            while(sc.hasNextLine()){
+                if(!str.toString().matches("")) // to separate words in dif lines
+                    str.append(";");
                 str.append(sc.nextLine());
+            }
             sc.close();
 
-            String s = str.toString();
-            
+            s = str.toString();
+            s = s.replace(" ", ";");
+            s = s.replace(",", ";");
+            String[] wordsTemp = s.split(";");
 
-            int c = 0;
-            for (int i = 0; i<s.length(); i++)
-            {
-                int j = s.indexOf(" ");
-                int m = s.indexOf(";");
-                if (s.charAt(i) == s.charAt(j) || s.charAt(i) == s.charAt(m)) {
-                    Words.add(s.substring(c,i-1));
-                    c = i+1;
-                }
-            }
-            return Words;
+            for(String temp : wordsTemp)
+                words.add(temp.toUpperCase());
+
+            return words;
         
         }  catch (FileNotFoundException e) {
             System.out.println("File not found");

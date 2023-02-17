@@ -1,40 +1,40 @@
-
-import java.util.Scanner;
 import java.io.File;
+import java.util.List;
 
-public class WSSolver extends Verification{
+public class WSSolver{
     public static void main(String[] args) throws Exception {
         // String[] words =  {"Up", "Down", "Left", "Right", "UpLeft", "UpRight", "DownLeft", "DownRight"};
-        char[][] puzzle = new char[40][40];
-        int i;
-
-
-        // vai ler o args[0] para ler o ficheiro
-        File file = new File(args[0]);
-        
-        Scanner sc = new Scanner(file);
-
-        int puzzleLineLength = 12; // mais tarde determinar dinamicamente
-        int line = 0;
-        while(sc.hasNextLine() && line < puzzleLineLength) {
-            String tempLine = sc.nextLine();
-            for(i = 0; i < puzzleLineLength; i++){
-                puzzle[line][i] = tempLine.charAt(i);
-            }
-            line++;
-        }
-        sc.close();
-
-        for(i = 0; i < puzzle.length; i++){
-            for(int j = 0; j < puzzle.length; i++){
-                System.out.println(puzzle[i][j] + " ");
-            }
-            System.out.print("\n");
-        }
-
+        // int i;
         Verification verify = new Verification();
+        ReadData data = new ReadData();
+        File file;
+        
+        try {
+            file = new File(args[0]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Não foi introduzido um ficheiro");
+            return;
+        }
 
-        boolean a = verify.validateWordSearch(file); // so para saber como usar a seguir
+        boolean validateWS = verify.validateWordSearch(file);
+        boolean validateWords = verify.validateWords(file);
+        if(!validateWS || !validateWords)
+            return;
+        
+        List<String> words = data.readWords(file);
+        for(String s : words) // remover depois, apenas para teste
+            System.out.println(s);
+        System.out.println("\n");
+
+        char[][] wordSearch = data.readWordSearch(file);
+        for(char[] c : wordSearch){ // remover depois, apenas para teste
+            for(char cc : c)
+                System.out.print(cc + " ");
+            System.out.println();
+        }
+
+
+
 
     }
 
