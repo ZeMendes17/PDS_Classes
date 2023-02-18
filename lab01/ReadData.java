@@ -56,8 +56,11 @@ public class ReadData implements InfoInterface {
             s = s.replace(",", ";");
             String[] wordsTemp = s.split(";");
 
-            for(String temp : wordsTemp)
+            for(String temp : wordsTemp){
+                if(temp.length() < 3) // ignores words with less than 3 letters
+                    continue;
                 words.add(temp.toUpperCase());
+            }
 
             return words;
         
