@@ -1,8 +1,9 @@
 public class Word {
-    String word, direction;
+    String word;
+    Directions direction;
     int word_size, x, y;
 
-    public Word(String word, int word_size, int x, int y, String direction){
+    public Word(String word, int word_size, int x, int y, Directions direction){
         this.word = word;
         this.word_size = word_size;
         this.x = x;
@@ -23,7 +24,7 @@ public class Word {
     public int getY(){
         return y;
     }
-    public String getDirection(){
+    public Directions getDirection(){
         return direction;
     }
 
@@ -40,12 +41,12 @@ public class Word {
     public void setY(int y){
         this.y = y;
     }
-    public void setDirection(String direction){
+    public void setDirection(Directions direction){
         this.direction = direction;
     }
 
     @Override
 	public String toString() {
-		return String.format("%s %d %d,%d %s", word, word_size, x, y, direction);
+		return String.format("%-12s %-5d %d,%-5d %s", word.toLowerCase(), word_size, x+1, y+1, direction);
 	}
 }
