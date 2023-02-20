@@ -8,13 +8,13 @@ public class RandomGenerator {
     int x, y;
     Directions direction;
 
-    public RandomGenerator(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
-    public RandomGenerator(Directions direction){
-        this.direction = direction;
-    }
+    // public RandomGenerator(int x, int y){
+    //     this.x = x;
+    //     this.y = y;
+    // }
+    // public RandomGenerator(Directions direction){
+    //     this.direction = direction;
+    // }
 
     // getters
     public int getX(){
@@ -40,7 +40,15 @@ public class RandomGenerator {
 
     private int RandomNumber(int low, int high){
         Random r = new Random();
-        return r.nextInt(high-low) + low;
+        return r.nextInt(high+1-low) + low;
+    }
+    
+    public int generatePosition(int max){
+        return RandomNumber(1, max);
+    }
+    public Directions generateDirection(){
+        int i = RandomNumber(1, 8);
+        return Directions.values()[i];
     }
 
 }
