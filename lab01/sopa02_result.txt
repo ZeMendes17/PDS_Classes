@@ -2,12 +2,13 @@ padroes      7     8,3     Right
 software     8     1,8     Left
 tudo         4     12,2     Up
 desenho      7     8,2     UpRight
+ola          3     3,2     DownRight
 
 E R A W T F O S . . . . 
 . . . . . . . O . . . . 
-. . . . . . H . . . . . 
-. . . . . N . . . . . . 
-. . . . E . . . . . . . 
+. O . . . . H . . . . . 
+. . L . . N . . . . . . 
+. . . A E . . . . . . . 
 . . . S . . . . . . . . 
 . . E . . . . . . . . . 
 . D P A D R O E S . . . 

@@ -75,7 +75,25 @@ public class Solution {
         for(Word w : downRight)
             for(String s : words)
                 if(w.getWord().equals(s))
-                    result.add(w);                    
+                    result.add(w);  
+                    
+        // now at last we need to see only validate, for example, FARO and FAROL, on same pos only FAROL is the solution
+        List<Word> removeWords = new ArrayList<>();
+        for(Word w : result){
+            for(Word ww : result){
+                int wRow = w.getX();
+                int wwRow = ww.getX();
+                int wCol = w.getY();
+                int wwCol = ww.getY();
+                
+                if(wRow == wwRow && wCol == wwCol && w.getWord().contains(ww.getWord()) && !w.getWord().equals(ww.getWord())){
+                    removeWords.add(ww);
+                }
+            }
+        }
+
+        for(Word w : removeWords)
+            result.remove(w);
             
         return result;
     }
@@ -295,23 +313,6 @@ public class Solution {
                 tempWord = new StringBuilder();
             }
         }
-
-        // now at last we need to see only validate, for example, FARO and FAROL, on same pos only FAROL is the solution
-        List<Word> removeWords = new ArrayList<>();
-        for(Word w : words){
-            for(Word ww : words){
-                int wRow = w.getX();
-                int wwRow = ww.getX();
-                int wCol = w.getY();
-                int wwCol = w.getY();
-                if(wRow == wwRow && wCol == wwCol && w.getWord().contains(ww.getWord()))
-                    removeWords.add(ww);
-            }
-        }
-
-        for(Word w : removeWords)
-            words.remove(w);
-
         return words;
     }
 }

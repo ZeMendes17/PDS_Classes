@@ -63,7 +63,7 @@ public class PrintWS {
                     col--;
                 }else if(direction.equals(Directions.DownRight)){
                     row++;
-                    col--;
+                    col++;
                 }
             }
         }
