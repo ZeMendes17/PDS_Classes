@@ -1,0 +1,17 @@
+cubo         4     5,6     Right
+foto         4     8,7     Left
+colher       6     1,1     Down
+pera         4     4,5     UpLeft
+banana       6     7,3     UpRight
+sal          3     8,8     DownLeft
+
+C A . . . . . . . . 
+O . R . . . . A . . 
+L . . E . . N . . . 
+H . . . P A . . . . 
+E . . . N C U B O . 
+R . . A . . . . . . 
+. . B . . . . . . . 
+. . . O T O F S . . 
+. . . . . . A . . . 
+. . . . . L . . . . 
