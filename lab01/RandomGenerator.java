@@ -47,7 +47,7 @@ public class RandomGenerator {
         return RandomNumber(1, max);
     }
     public Directions generateDirection(){
-        int i = RandomNumber(1, 8);
+        int i = RandomNumber(0, 7);
         return Directions.values()[i];
     }
 

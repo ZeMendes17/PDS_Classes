@@ -3,6 +3,7 @@ public class WSGenerator {
     // that is obtained in the command line using -i
     // should contain a size, -s
     // and may have a destination file given by -o
+
     public static void main(String[] args) {
         RandomGenerator a = new RandomGenerator();
 
