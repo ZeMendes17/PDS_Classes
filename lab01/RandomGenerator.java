@@ -36,8 +36,6 @@ public class RandomGenerator {
 
     public char generateRandomChar(){
         String allAlpha = "QWERTYUIOPASDFGHJKLZXCVBNM";
-        int size = allAlpha.length();
-        int rand = generateRand(size-1);
-        return allAlpha.charAt(rand);
+        return getRandomCharFromString(allAlpha);
     }
 }
