@@ -1,7 +1,2 @@
-programming
-java
-words
-lines
-civic
-test
-stack
+programming;java;words lines civil
+test;stack;

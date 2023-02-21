@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Random;
 
 public class RandomGenerator {
@@ -5,50 +6,38 @@ public class RandomGenerator {
     // also
     // we have 8 possible directions, it will generate a number between 1 and 8 inclusive
     // and identify the direction
-    int x, y;
-    Directions direction;
+    int rand;
 
-    // public RandomGenerator(int x, int y){
-    //     this.x = x;
-    //     this.y = y;
-    // }
-    // public RandomGenerator(Directions direction){
-    //     this.direction = direction;
-    // }
-
-    // getters
-    public int getX(){
-        return x;
-    }
-    public int getY(){
-        return y;
-    }
-    public Directions getDirection(){
-        return direction;
+    public int getRand(){
+        return rand;
     }
 
-    //setters
-    public void setX(int x){
-        this.x = x;
-    }
-    public void setY(int y){
-        this.y = y;
-    }
-    public void setDirection(Directions direction){
-        this.direction = direction;
+    public void setRand(int rand){
+        this.rand = rand;
     }
 
-    private int RandomNumber(int low, int high){
+    public int generateRand(int max){
         Random r = new Random();
-        return r.nextInt(high+1-low) + low;
-    }
-    
-    public int generatePosition(int max){
-        return RandomNumber(1, max);
-    }
-    public Directions generateDirection(){
-        int i = RandomNumber(0, 7);
-        return Directions.values()[i];
+        this.rand = r.nextInt(max+1);
+        return this.rand;
     }
 
+    public int getRandomNumbFromList(List<Integer> numberList){
+        int size = numberList.size();
+        int rand = generateRand(size-1);
+        return numberList.get(rand);
+    }
+
+    private char getRandomCharFromString(String s){
+        int size = s.length();
+        int rand = generateRand(size-1);
+        return s.charAt(rand);
+    }
+
+    public char generateRandomChar(){
+        String allAlpha = "QWERTYUIOPASDFGHJKLZXCVBNM";
+        int size = allAlpha.length();
+        int rand = generateRand(size-1);
+        return allAlpha.charAt(rand);
+    }
 }

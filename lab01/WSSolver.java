@@ -23,7 +23,7 @@ public class WSSolver{
             return;
         
         // gets the WS and the words
-        List<String> words = data.readWords(file);
+        List<String> words = data.readWords(file, 1);
         char[][] wordSearch = data.readWordSearch(file);
 
         // for(char[] c : wordSearch){ // prints the base WS
