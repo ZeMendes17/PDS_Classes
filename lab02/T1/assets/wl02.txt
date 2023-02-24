@@ -1,0 +1,4 @@
+thERmal caPacIty;
+VIRTUAl
+velOCIty;DisplACEment
+stoRAge modULatiON

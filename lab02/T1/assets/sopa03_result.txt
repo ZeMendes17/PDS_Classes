@@ -1,0 +1,34 @@
+
+     ╭──────────────╮
+     │   Solution:  │
+     ╰──────────────╯
+
+     ╭─────────────┬─────┬───────┬──────────╮
+     │     Palavra │ len │  x, y │ Direção  │
+     ├─────────────┼─────┼───────┼──────────┤
+     │  aaaAAAAaaa │  10 │  9, 6 │ Up       │
+     │  bBBBbbbBbb │  10 │  9, 3 │ Up       │
+     │  ccCCccCCcc │  10 │  9, 2 │ Up       │
+     │  dddDDDdDdd │  10 │  9, 0 │ Up       │
+     │  eeeeeeEEEE │  10 │  9, 5 │ Up       │
+     │  FfFffFffFf │  10 │  9, 1 │ Up       │
+     │  GGGGGGGGGg │  10 │  9, 7 │ Up       │
+     │  hhhhHHHHhh │  10 │  9, 9 │ Up       │
+     │  iIIIIiiiii │  10 │  9, 8 │ Up       │
+     │  jjJJjjjJJj │  10 │  9, 4 │ Up       │
+     ╰─────────────┴─────┴───────┴──────────╯
+
+     ╭─────────────────────╮
+     │ D F C B J E A G I H │
+     │ D F C B J E A G I H │
+     │ D F C B J E A G I H │
+     │ D F C B J E A G I H │
+     │ D F C B J E A G I H │
+     │ D F C B J E A G I H │
+     │ D F C B J E A G I H │
+     │ D F C B J E A G I H │
+     │ D F C B J E A G I H │
+     │ D F C B J E A G I H │
+     ╰─────────────────────╯
+
+
