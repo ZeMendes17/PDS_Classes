@@ -1,3 +1,4 @@
+package src.solver;
 import java.util.List;
 
 public class PrintWS {

@@ -1,3 +1,5 @@
+package src.solver;
+
 public class Word {
     String word;
     Directions direction;

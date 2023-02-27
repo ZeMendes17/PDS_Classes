@@ -1,3 +1,4 @@
+package src.solver;
 import java.util.Scanner;
 import java.util.List;
 import java.io.File;

@@ -1,10 +1,21 @@
-# To run WSSolver use:
-- javac WSSolver.java
-- java WSSolver "file_name"
+# LAB01 -> Word Seach Solver (letter soup)
 
-file_name should be a Word Search and words as requested
+# To compile and run WSSolver use:
+```
+javac lab01/src/solver/*.java
+java lab01.src.solver.WSSolver lab01/assets/Sopa_de_Letras  
+```
 
-# To run WSGenerator use:
-- javac WSGenerator.java
-- java WSGenerator -i "source_file" -s (int)size
-- or: java WSGenerator -i "source_file" -s (int)size -o "destination_file"
+
+# To compile and run WSGenerator use:
+```
+javac lab01/src/generator/*.java
+java lab01.src.generator.WSSolver -i lab01/assets/Word_list -s 12 -o out.txt
+```
+
+# Other files
+
+```
+Files with examples are in the assets directory
+The PDF with the exercises is in the docs directory
+```

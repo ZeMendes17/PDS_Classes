@@ -1,6 +1,9 @@
+package src.generator;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import src.solver.ReadData;
 
 public class WSGenerator {
     // generates Word Search using a file that contains the words

@@ -1,3 +1,4 @@
+package src.solver;
 import java.io.File;
 
 public interface VerificationInterface {
