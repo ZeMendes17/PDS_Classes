@@ -5,6 +5,8 @@ public class Word {
     Directions direction;
     int word_size, x, y;
 
+
+    //constructor
     public Word(String word, int word_size, int x, int y, Directions direction){
         this.word = word;
         this.word_size = word_size;

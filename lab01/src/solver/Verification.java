@@ -20,23 +20,32 @@ public class Verification implements VerificationInterface {
         return true;
     }
 
+    // This method is used to validate the word search file
     @Override
     public boolean validateWordSearch(File f) {
 
         try {
             Scanner sc = new Scanner(f);
+
+            //  Get next line
             String tempLine = sc.nextLine();
+
+            //  Check if the line is capitalized 
+            // (a line can only be part of the soup if it is fully capitalized)
             if(tempLine == null || !isStringUpperCase(tempLine)){
                 sc.close();
                 return false;
             }
 
+            //  Check if the line is bigger than the maximum length
             int ws_lenght = tempLine.length();
             if(ws_lenght >= 40){
                 sc.close();
                 return false;
             }
 
+
+            //  Check one last time if everything is in order with the Word Search
             for(int i = 1; i < ws_lenght; i++){
                 tempLine = sc.nextLine();
                 if( tempLine.isEmpty() || tempLine.length() != ws_lenght || !isStringUpperCase(tempLine)){
@@ -55,12 +64,16 @@ public class Verification implements VerificationInterface {
         
     }
 
+
+    // This method is used to validate the words we are looking for
     @Override
     public boolean validateWords(File f) {
         try {
             Scanner sc = new Scanner(f);
             String tempLine = sc.nextLine();
             int ws_lenght = tempLine.length();
+
+            // Build the string with all the words
             for(int i = 1; i < ws_lenght; i++)
                 tempLine = sc.nextLine();
             
@@ -77,10 +90,12 @@ public class Verification implements VerificationInterface {
 
             String s = str.toString();
 
+            // Remove all the spaces, commas and semicolons
             s = s.replace(" ", "");
             s = s.replace(";", "");
             s = s.replace(",", "");
 
+            // Finally, check if all the words (compact in one big string) are alphanumeric
             if(!s.matches("[a-zA-Z]+")) // verificar se todas as palavras sao alfanumericas
                 return false;
             return true;
