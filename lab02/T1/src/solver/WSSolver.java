@@ -1,4 +1,4 @@
-package lab01.src.solver;
+package T1.src.solver;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

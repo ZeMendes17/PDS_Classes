@@ -1,4 +1,4 @@
-package lab01.src.solver;
+package T1.src.solver;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;

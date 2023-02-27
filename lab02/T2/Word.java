@@ -1,5 +1,5 @@
 
-package lab01;
+package T2;
 public class Word {
 	String text;
 	int length;

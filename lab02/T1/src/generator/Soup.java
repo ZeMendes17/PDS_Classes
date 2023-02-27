@@ -1,11 +1,10 @@
-package lab01.src.generator;
+package T1.src.generator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import lab01.src.solver.Direction;
-
+import T1.src.solver.Direction;
 
 public class Soup {
     //  Important class global variables

@@ -1,4 +1,4 @@
-package lab01;
+package T2;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;

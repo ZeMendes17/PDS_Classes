@@ -1,4 +1,4 @@
-package lab01.src.generator;
+package T1.src.generator;
 
 //  Simple class to be used as a variable type to avoid using 2D arrays elsewhere
 public class SoupIndex {

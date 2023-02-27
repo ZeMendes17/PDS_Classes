@@ -1,4 +1,4 @@
-package lab01;
+package T2;
 import java.util.*;
 import java.util.List;
 import java.io.*;
