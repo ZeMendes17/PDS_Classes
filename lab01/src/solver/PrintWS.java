@@ -1,10 +1,12 @@
 package src.solver;
 import java.util.List;
 
+// class used to print the found words in the WS
 public class PrintWS {
     List<Word> words;
     char[][] wordSearch;
 
+    // contructor
     public PrintWS(List<Word> words, char[][] wordSearch){
         this.words = words;
         this.wordSearch = wordSearch;
@@ -28,21 +30,26 @@ public class PrintWS {
         this.wordSearch = wordSearch;
     }
 
-    // display WS
+    // display WS into the terminal
     public void print(){
         int size = wordSearch.length;
         char[][] result = new char[size][size];
+        // fills all the positions with '.'
         for(int i = 0; i < size; i++)
             for(int j = 0; j < size; j++)
                 result[i][j] = '.';
 
+        // for the words in this list it will insert them in the correct position
         for(Word w : words){
             System.out.println(w);
 
+            // get the coordinates, size and direction of that word
             int row = w.getX();
             int col = w.getY();
             int wordSize = w.getSize();
             Directions direction = w.getDirection();
+
+            // inserts them in the WS
             for(int i = 0; i < wordSize; i++){
                 result[row][col] = wordSearch[row][col];
                 if(direction.equals(Directions.Up)){
@@ -68,9 +75,9 @@ public class PrintWS {
                 }
             }
         }
-
+        // prints out the WS alredy filled
         System.out.println();
-        for(char[] c : result){ // remover depois, apenas para teste
+        for(char[] c : result){
             for(char cc : c)
                 System.out.print(cc + " ");
             System.out.println();

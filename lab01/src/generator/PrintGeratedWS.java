@@ -5,12 +5,15 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.io.PrintWriter;
 
+/// this class is used to print the gerated Word Search to the terminal or to a destination file
 public class PrintGeratedWS {
     
+    // prints it to the terminal
     public void print(char[][] wordSearch, File f){
         RandomGenerator rand = new RandomGenerator();
 
-        for(char[] c : wordSearch){ // prints the WS
+        // prints the Word Search
+        for(char[] c : wordSearch){
             for(char cc : c){
                 if(cc == '\0')
                     cc = rand.generateRandomChar();
@@ -19,6 +22,7 @@ public class PrintGeratedWS {
             System.out.println();
         }
 
+        // prints the words to be found in the WS
         try {
             Scanner sc = new Scanner(f);
             while(sc.hasNextLine())
@@ -31,13 +35,15 @@ public class PrintGeratedWS {
         }
     }
 
+    // prints it to a destination file
     public void printToFile(char[][] wordSearch, File f, String dest){
         RandomGenerator rand = new RandomGenerator();
 
         try {
             PrintWriter writer = new PrintWriter(dest);
 
-            for(char[] c : wordSearch){ // prints the WS
+            // prints the Word Search to the file
+            for(char[] c : wordSearch){
                 for(char cc : c){
                     if(cc == '\0')
                         cc = rand.generateRandomChar();
@@ -45,8 +51,11 @@ public class PrintGeratedWS {
                 }
                 writer.println();
             }
+
             try {
                 Scanner sc = new Scanner(f);
+
+                // prints the words to be found in the WS from a destination file
                 while(sc.hasNextLine())
                     writer.println(sc.nextLine());
     

@@ -33,7 +33,7 @@ public class WSSolver {
 
     //  Find a Search Word in the Soup
     private static int[] singleSolution(String s, Grid grid) {
-        String key = s;
+        // String key = s;
         s = s.toUpperCase();
 
         int size = grid.getSize();
