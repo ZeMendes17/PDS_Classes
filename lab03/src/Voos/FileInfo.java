@@ -42,7 +42,8 @@ public class FileInfo {
 
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
-                    if(line.split(" ")[0] == "E"){
+                    System.out.println(line.split(" ")[0]);
+                    if(line.split(" ")[0].equals("E")){
                         impossibleToRegister.add(line);
                     } else {
                         if(tourist + Integer.parseInt(line.split(" ")[1]) < totalT){
@@ -54,7 +55,7 @@ public class FileInfo {
                 }
 
                 System.out.println("Código de voo " + flight + ". Lugares disponíveis: " + totalT+
-                                   "lugares em classe Turística.");
+                                   " lugares em classe Turística.");
                 System.out.println("Classe executiva não disponível neste voo.");
                 System.out.print("Não é possível obter os lugares para a reserva:");
                 for(String s : impossibleToRegister){
@@ -75,13 +76,13 @@ public class FileInfo {
 
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
-                    if(line.split(" ")[0] == "E"){
+                    if(line.split(" ")[0].equals("E")){
                         if(executive + Integer.parseInt(line.split(" ")[1]) < totalE){
                             executive += Integer.parseInt(line.split(" ")[1]);
                         } else {
                             impossibleToRegister.add(line);
                         }
-                    } else if(line.split(" ")[0] == "T") {
+                    } else if(line.split(" ")[0].equals("T")) {
                         if(tourist + Integer.parseInt(line.split(" ")[1]) < totalT){
                             tourist += Integer.parseInt(line.split(" ")[1]);
                         } else {
@@ -90,12 +91,12 @@ public class FileInfo {
                     }
                 }
                 System.out.println("Código de voo " + flight + ". Lugares disponíveis: " + totalE+
-                                   "lugares em classe Executiva; " + totalT + "lugares em classe Turística."+
+                                   " lugares em classe Executiva; " + totalT + " lugares em classe Turística."+
                                    " Não é possível obter os lugarespara a reserva: ");
 
                 System.out.print("Não é possível obter os lugares para a reserva:");
                 for(String s : impossibleToRegister){
-                    System.out.print(s + ", ");
+                    System.out.print(s + " ");
                 }
                 System.out.println();
             }

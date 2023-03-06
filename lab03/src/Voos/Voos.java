@@ -9,12 +9,11 @@ public class Voos {
         String input, option, file;
         int terminate;
 
-        System.out.println(helpMessage());
         while(true){
             terminate = 0;
-            System.out.println();
+            System.out.println("Escolha uma opção: (H para ajuda)");
             input = in.nextLine();
-            option = input.split("//s+")[0]; // first
+            option = input.split(" ")[0]; // first
 
             switch(option){
                 case "H":
@@ -22,9 +21,7 @@ public class Voos {
                     break;
 
                 case "I":
-                    System.out.print("Filename: ");
-                    Scanner sc = new Scanner(System.in);
-                    file = sc.nextLine();
+                    file = input.split(" ")[1];
                     FileInfo f_info = new FileInfo(file);
                     f_info.readFile();
                     break;
@@ -64,6 +61,6 @@ public class Voos {
                "F flight_code num_seats_executive num_seats_tourist -> New flight with determined code and seats\n"+
                "R flight_code class number_seats -> New flight reservation\n"+
                "C reservation_code -> cancels the flight\n"+
-               "Q -> terminates the program\n";
+               "Q -> terminates the program";
     }
 }
