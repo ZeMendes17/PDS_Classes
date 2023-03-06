@@ -1,4 +1,4 @@
-package src;
+package src.Jogo_do_galo;
 
 public class JGaloEngine implements JGaloInterface{
     char currentPlayer; // ou 'O'
@@ -32,6 +32,9 @@ public class JGaloEngine implements JGaloInterface{
     // does the play, returning true if it is possible and false if not
     // also switches from X to O
     public boolean setJogada(int lin, int col) {
+        --lin;
+        --col;
+
         if(numberOfPlays >= 9 || lin > 2 || col > 2 || board[lin][col] != '\0'){
             return false;
         }
@@ -45,7 +48,6 @@ public class JGaloEngine implements JGaloInterface{
             }
 
             numberOfPlays++;
-            System.out.println(numberOfPlays);
             if(numberOfPlays >= 9)
                 finished = true;
 

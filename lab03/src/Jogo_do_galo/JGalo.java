@@ -1,4 +1,4 @@
-package src;
+package src.Jogo_do_galo;
 
 
 import javax.swing.JFrame;

@@ -1,4 +1,4 @@
-package src;
+package src.Jogo_do_galo;
 
  // you may change this package
 
