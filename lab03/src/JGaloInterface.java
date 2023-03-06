@@ -1,5 +1,6 @@
+package src;
 
-package lab3; // you may change this package
+ // you may change this package
 
 public interface JGaloInterface {
 	public char getActualPlayer(); // 'O' or 'X'
