@@ -62,6 +62,6 @@ public class JGalo extends JFrame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
-		new JGalo( /* something here */ );
+		new JGalo(new JGaloEngine());
 	}
 } 
