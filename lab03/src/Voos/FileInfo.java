@@ -40,7 +40,7 @@ public class FileInfo {
                 T = flight_info.split(" ")[1];
                 String seats[] = T.split("x");
                 int totalT = Integer.parseInt(seats[0]) * Integer.parseInt(seats[1]);
-                result.add(Integer.toString(totalT));
+                result.add(T);
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
                     result.add(line);
@@ -71,14 +71,15 @@ public class FileInfo {
                 List<String> impossibleToRegister = new ArrayList<>();
 
                 E = flight_info.split(" ")[1];
+
                 String seats[] = E.split("x");
                 int totalE = Integer.parseInt(seats[0]) * Integer.parseInt(seats[1]);
 
                 T = flight_info.split(" ")[2];
                 seats = T.split("x");
                 int totalT = Integer.parseInt(seats[0]) * Integer.parseInt(seats[1]);
-                result.add(Integer.toString(totalT));
-                result.add(Integer.toString(totalE));
+                result.add(T);
+                result.add(E);
                 
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();

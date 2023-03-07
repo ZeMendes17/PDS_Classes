@@ -2,6 +2,8 @@ package src.Voos;
 
 import java.util.Scanner;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Voos {
     public static void main(String[] args) {
@@ -9,6 +11,8 @@ public class Voos {
         Scanner in = new Scanner(System.in);
         String input, option, file;
         int terminate;
+        // stores flight and its info
+        Map<String, List<String>> map = new HashMap<>();
 
         while(true){
             terminate = 0;
@@ -25,11 +29,13 @@ public class Voos {
                     file = input.split(" ")[1];
                     FileInfo f_info = new FileInfo(file);
                     List<String> flight = f_info.readFile();
-                    for(String s : flight)
-                        System.out.println(s);
+                    String flight_name = flight.get(0);
+                    flight.remove(0);
+                    map.put(flight_name, flight);
                     break;
 
                 case "M":
+                    
                     break;
                 
                 case "F":
