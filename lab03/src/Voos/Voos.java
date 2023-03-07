@@ -11,6 +11,7 @@ public class Voos {
         Scanner in = new Scanner(System.in);
         String input, option, file;
         int terminate;
+        int sequential_reservation_number = 0;
         // stores flight and its info
         Map<String, List<String>> map = new HashMap<>();
 
@@ -42,6 +43,44 @@ public class Voos {
                     break;
 
                 case "R":
+                    String flight_code = input.split(" ")[1];
+                    String class = input.split(" ")[2];
+                    int number_seats = Integer.parseInt(input.split(" ")[3]);
+                    if(map.containsKey(flight_code)){
+                        List<String> flight_info = map.get(flight_code);
+                        int num_executive = Integer.parseInt(flight_info.get(0));
+                        int num_tourist = Integer.parseInt(flight_info.get(1));
+                        if(class.equals("E")){
+                            if(num_executive >= number_seats){
+                                num_executive -= number_seats;
+                                flight_info.set(0, Integer.toString(num_executive));
+                                flight_info.add("E" + number_seats);
+                                map.put(flight_code, flight_info);
+                                sequential_reservation_number++;
+                            }
+                            else{
+                                System.err.println("Not enough seats");
+                            }
+                        }
+                        else if(class.equals("T")){
+                            if(num_tourist >= number_seats){
+                                num_tourist -= number_seats;
+                                flight_info.set(1, Integer.toString(num_tourist));
+                                flight_info.add("T" + number_seats);
+                                map.put(flight_code, flight_info);
+                                sequential_reservation_number++;
+                            }
+                            else{
+                                System.err.println("Not enough seats");
+                            }
+                        }
+                        else{
+                            System.err.println("Invalid class");
+                        }
+                    }
+                    else{
+                        System.err.println("Flight does not exist");
+                    }
                     break;
 
                 case "C":
