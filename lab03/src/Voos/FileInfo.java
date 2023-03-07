@@ -42,11 +42,10 @@ public class FileInfo {
 
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
-                    System.out.println(line.split(" ")[0]);
                     if(line.split(" ")[0].equals("E")){
                         impossibleToRegister.add(line);
                     } else {
-                        if(tourist + Integer.parseInt(line.split(" ")[1]) < totalT){
+                        if(tourist + Integer.parseInt(line.split(" ")[1]) <= totalT){
                             tourist += Integer.parseInt(line.split(" ")[1]);
                         } else {
                             impossibleToRegister.add(line);
@@ -57,33 +56,36 @@ public class FileInfo {
                 System.out.println("Código de voo " + flight + ". Lugares disponíveis: " + totalT+
                                    " lugares em classe Turística.");
                 System.out.println("Classe executiva não disponível neste voo.");
-                System.out.print("Não é possível obter os lugares para a reserva:");
-                for(String s : impossibleToRegister){
-                    System.out.print(s + ", ");
+
+                if(!impossibleToRegister.isEmpty()){
+                    System.out.print("Não é possível obter os lugares para a reserva:");
+                    for(String s : impossibleToRegister){
+                        System.out.print(s + " ");
+                    }
+                    System.out.println();
                 }
-                System.out.println();
 
             } else if(flight_info.split(" ").length == 3) {
                 List<String> impossibleToRegister = new ArrayList<>();
 
-                T = flight_info.split(" ")[2];
+                T = flight_info.split(" ")[1];
                 String seats[] = T.split("x");
                 int totalE = Integer.parseInt(seats[0]) * Integer.parseInt(seats[1]);
 
-                E = flight_info.split(" ")[1];
+                E = flight_info.split(" ")[2];
                 seats = E.split("x");
                 int totalT = Integer.parseInt(seats[0]) * Integer.parseInt(seats[1]);
-
+                
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
                     if(line.split(" ")[0].equals("E")){
-                        if(executive + Integer.parseInt(line.split(" ")[1]) < totalE){
+                        if(executive + Integer.parseInt(line.split(" ")[1]) <= totalE){
                             executive += Integer.parseInt(line.split(" ")[1]);
                         } else {
                             impossibleToRegister.add(line);
                         }
                     } else if(line.split(" ")[0].equals("T")) {
-                        if(tourist + Integer.parseInt(line.split(" ")[1]) < totalT){
+                        if(tourist + Integer.parseInt(line.split(" ")[1]) <= totalT){
                             tourist += Integer.parseInt(line.split(" ")[1]);
                         } else {
                             impossibleToRegister.add(line);
@@ -91,16 +93,17 @@ public class FileInfo {
                     }
                 }
                 System.out.println("Código de voo " + flight + ". Lugares disponíveis: " + totalE+
-                                   " lugares em classe Executiva; " + totalT + " lugares em classe Turística."+
-                                   " Não é possível obter os lugarespara a reserva: ");
+                                   " lugares em classe Executiva; " + totalT + " lugares em classe Turística.");
 
-                System.out.print("Não é possível obter os lugares para a reserva:");
-                for(String s : impossibleToRegister){
-                    System.out.print(s + " ");
+                if(!impossibleToRegister.isEmpty()){
+                    System.out.print("Não é possível obter os lugares para a reserva:");
+                    for(String s : impossibleToRegister){
+                        System.out.print(s + " ");
+                    }
+                    System.out.println();        
                 }
-                System.out.println();
             }
-
+            
             sc.close();
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
