@@ -1,6 +1,7 @@
 package src.Voos;
 
 import java.util.Scanner;
+import java.util.List;
 
 public class Voos {
     public static void main(String[] args) {
@@ -23,7 +24,9 @@ public class Voos {
                 case "I":
                     file = input.split(" ")[1];
                     FileInfo f_info = new FileInfo(file);
-                    f_info.readFile();
+                    List<String> flight = f_info.readFile();
+                    for(String s : flight)
+                        System.out.println(s);
                     break;
 
                 case "M":

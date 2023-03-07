@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 // class to read flight file
 public class FileInfo {
     String file;
@@ -25,12 +24,14 @@ public class FileInfo {
     }
 
     // method to read file
-    public void readFile(){
+    public List<String> readFile(){
+        List<String> result = new ArrayList<>();
         File f = new File(file);
         try {
             Scanner sc = new Scanner(f);
             String flight_info = sc.nextLine();
             String flight = flight_info.split(" ")[0].replaceAll(">", "");
+            result.add(flight);
             String T, E;
             int tourist = 0; int executive = 0;
 
@@ -39,9 +40,10 @@ public class FileInfo {
                 T = flight_info.split(" ")[1];
                 String seats[] = T.split("x");
                 int totalT = Integer.parseInt(seats[0]) * Integer.parseInt(seats[1]);
-
+                result.add(Integer.toString(totalT));
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
+                    result.add(line);
                     if(line.split(" ")[0].equals("E")){
                         impossibleToRegister.add(line);
                     } else {
@@ -68,16 +70,19 @@ public class FileInfo {
             } else if(flight_info.split(" ").length == 3) {
                 List<String> impossibleToRegister = new ArrayList<>();
 
-                T = flight_info.split(" ")[1];
-                String seats[] = T.split("x");
+                E = flight_info.split(" ")[1];
+                String seats[] = E.split("x");
                 int totalE = Integer.parseInt(seats[0]) * Integer.parseInt(seats[1]);
 
-                E = flight_info.split(" ")[2];
-                seats = E.split("x");
+                T = flight_info.split(" ")[2];
+                seats = T.split("x");
                 int totalT = Integer.parseInt(seats[0]) * Integer.parseInt(seats[1]);
+                result.add(Integer.toString(totalT));
+                result.add(Integer.toString(totalE));
                 
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
+                    result.add(line);
                     if(line.split(" ")[0].equals("E")){
                         if(executive + Integer.parseInt(line.split(" ")[1]) <= totalE){
                             executive += Integer.parseInt(line.split(" ")[1]);
@@ -103,10 +108,11 @@ public class FileInfo {
                     System.out.println();        
                 }
             }
-            
             sc.close();
+            return result;
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
+            return null;
         }
     }
 }
