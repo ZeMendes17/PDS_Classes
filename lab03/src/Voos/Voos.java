@@ -35,10 +35,19 @@ public class Voos {
                     break;
 
                 case "M":
-                    
+                    String name = input.split(" ")[1];
+                    if(map.get(name) == null)
+                        System.err.println("No such flight was found");
+                    else{
+                        Seats plane = new Seats(map.get(name));
+                        plane.display();
+                        for(String s : plane.result) // remove
+                            System.out.println(s);
+                    }
                     break;
                 
                 case "F":
+                
                     break;
 
                 case "R":
