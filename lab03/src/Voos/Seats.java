@@ -6,6 +6,7 @@ import java.util.List;
 public class Seats {
     List<String> flight;
     List<String> seats;
+    List<String> new_seats;
 
     // constructor
     public Seats(List<String> flight){
@@ -22,7 +23,7 @@ public class Seats {
         this.flight = flight;
     }
 
-    public void display(){
+    public void getPlane(int disp){
         int tourist_col = Integer.parseInt(flight.get(0).split("x")[0]);
         int tourist_row = Integer.parseInt(flight.get(0).split("x")[1]);
         Integer[][] tourist_seats = new Integer[tourist_row][tourist_col];
@@ -112,7 +113,9 @@ public class Seats {
                         result[i][j] = Integer.toString(all_seats[i-1][j-1]);
                 }
             }
-            print(result);
+            if(disp != 0){
+                print(result);
+            }
 
         } catch (NumberFormatException e) {
             Integer[][] plane = tourist_seats;
@@ -142,7 +145,9 @@ public class Seats {
                 }
             }
             // displays
-            print(result);
+            if(disp != 0){
+                print(result);
+            }
         }
     }
     
@@ -162,6 +167,7 @@ public class Seats {
         int p = number_of_pasengers;
         boolean insert_flag = false;
         boolean free_flag = false;
+        new_seats = new ArrayList<>();
         while(number_of_pasengers > 0){
             for(int i = 0; i < length; i++){
                 total = 0;
@@ -187,7 +193,7 @@ public class Seats {
                         number_of_pasengers -= p;
                         break;
                     }
-                    
+
                     insert_flag = true;
                     number_of_pasengers -= p;
                     break;
@@ -211,6 +217,7 @@ public class Seats {
                         sb.append(index+inicial+1);
                         sb.append(alpha.charAt(row));
                         seats.add(sb.toString());
+                        new_seats.add(sb.toString());
                         count++;
                     }
                 }
