@@ -8,7 +8,7 @@ public class Seats {
     List<String> seats;
     List<String> new_seats;
 
-    // constructor
+    //constructor
     public Seats(List<String> flight){
         this.flight = flight;
         seats = new ArrayList<>();
