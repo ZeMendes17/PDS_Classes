@@ -43,12 +43,12 @@ public class FileInfo {
                 result.add(T);
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
-                    result.add(line);
                     if(line.split(" ")[0].equals("E")){
                         impossibleToRegister.add(line);
                     } else {
                         if(tourist + Integer.parseInt(line.split(" ")[1]) <= totalT){
                             tourist += Integer.parseInt(line.split(" ")[1]);
+                            result.add(line);
                         } else {
                             impossibleToRegister.add(line);
                         }
@@ -83,16 +83,17 @@ public class FileInfo {
                 
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
-                    result.add(line);
                     if(line.split(" ")[0].equals("E")){
                         if(executive + Integer.parseInt(line.split(" ")[1]) <= totalE){
                             executive += Integer.parseInt(line.split(" ")[1]);
+                            result.add(line);
                         } else {
                             impossibleToRegister.add(line);
                         }
                     } else if(line.split(" ")[0].equals("T")) {
                         if(tourist + Integer.parseInt(line.split(" ")[1]) <= totalT){
                             tourist += Integer.parseInt(line.split(" ")[1]);
+                            result.add(line);
                         } else {
                             impossibleToRegister.add(line);
                         }

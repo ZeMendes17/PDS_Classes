@@ -41,7 +41,7 @@ public class Voos {
                     else{
                         Seats plane = new Seats(map.get(name));
                         plane.display();
-                        for(String s : plane.result) // remove
+                        for(String s : plane.seats) // remove
                             System.out.println(s);
                     }
                     break;
@@ -54,6 +54,10 @@ public class Voos {
                     break;
 
                 case "C":
+                    if(map.get(input.split(" ")[1]) != null)
+                        map.remove(input.split(" ")[1]);
+                    else
+                        System.out.println("Flight not found");
                     break;
 
                 case "Q":
