@@ -8,7 +8,7 @@ public class Seats {
     List<String> seats;
     List<String> new_seats;
 
-    // constructor
+    //constructor
     public Seats(List<String> flight){
         this.flight = flight;
         seats = new ArrayList<>();
@@ -117,6 +117,7 @@ public class Seats {
                 }
 
                 // seats that do not exist are represented by -1 in the matrix with all seats
+                for(int i = tourist_row; i < executive_row; i++){
                     for(int j = 0; j < plane_tourist[0].length; j++){
                         all_seats[i][j] = -1;
                     }
