@@ -25,6 +25,7 @@ public class Seats {
 
     // method to reserve seats
     public void getPlane(int disp){
+        
         // get number of seats in tourist class and executive class and create matrixes with that size to represent the plane seats
         int tourist_col = Integer.parseInt(flight.get(0).split("x")[0]);
         int tourist_row = Integer.parseInt(flight.get(0).split("x")[1]);
@@ -47,22 +48,26 @@ public class Seats {
 
             int count = 1;
 
-            // reserve seats for each passenger
-            for(int i = 2; i < flight.size(); i++){
+            // if there are no seats yet --> display empty seats
+            if(flight.size() > 2){
+                    
+                // reserve seats for each passenger
+                for(int i = 2; i < flight.size(); i++){
 
-                // if passenger is in tourist class
-                if(flight.get(i).split(" ")[0].equals("T")){
+                    // if passenger is in tourist class
+                    if(flight.get(i).split(" ")[0].equals("T")){
 
-                    // reserve a seat in the tourist class
-                    plane_tourist = reserveSeat(flight.get(i), tourist_seats, count, executive_col);
-                    count++;
-                
-                // if passenger is in executive class
-                } else if(flight.get(i).split(" ")[0].equals("E")) {
+                        // reserve a seat in the tourist class
+                        plane_tourist = reserveSeat(flight.get(i), tourist_seats, count, executive_col);
+                        count++;
+                    
+                    // if passenger is in executive class
+                    } else if(flight.get(i).split(" ")[0].equals("E")) {
 
-                    // reserve a seat in the executive class
-                    plane_executive = reserveSeat(flight.get(i), executive_seats, count, 0);
-                    count++;
+                        // reserve a seat in the executive class
+                        plane_executive = reserveSeat(flight.get(i), executive_seats, count, 0);
+                        count++;
+                    }
                 }
             }
 
@@ -160,18 +165,20 @@ public class Seats {
             }
 
         // if there is no executive class
-        } catch (NumberFormatException e) {
-
+        } catch (NumberFormatException | IndexOutOfBoundsException e) {
             // plane will only have tourist seats
             Integer[][] plane = tourist_seats;
 
-            // reserve seats for each passenger
-            for(int i = 1; i < flight.size(); i++){
-                if(!flight.get(i).split(" ")[0].equals("T"))
-                    continue;
+            if(flight.size() > 1){
 
-                plane = reserveSeat(flight.get(i), tourist_seats, i, 0);
+                // reserve seats for each passenger
+                for(int i = 1; i < flight.size(); i++){
+                    if(!flight.get(i).split(" ")[0].equals("T"))
+                        continue;
 
+                    plane = reserveSeat(flight.get(i), tourist_seats, i, 0);
+
+                }
             }
 
             // create a matrix with the size of the matrix with all seats plus one row and one column to represent the plane

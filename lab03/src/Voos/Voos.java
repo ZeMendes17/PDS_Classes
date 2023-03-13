@@ -53,22 +53,22 @@ public class Voos {
                 // option used to print out the planes seats
                 // showing which are occupied
                 case "M":
-                    try {
-                        String name = input.split(" ")[1];
-                        // if the code does not exist
-                        if(map.get(name) == null)
-                            System.err.println("No such flight was found");
-                        else{
-                            // Seat is used to put the passangers and map out the plane
-                            Seats plane = new Seats(map.get(name));
-                            // 1 to print out
-                            plane.getPlane(1);
-                        }
-                    // user does something wrong
-                    } catch (IndexOutOfBoundsException e) {
+                    if(input.length() <= 2){
                         System.err.println("Wrong arguments\n");
                         System.out.println(helpMessage());
                     }
+
+                    String name = input.split(" ")[1];
+                    // if the code does not exist
+                    if(map.get(name) == null)
+                        System.err.println("No such flight was found");
+                    else{
+                        // Seat is used to put the passangers and map out the plane
+                        Seats plane = new Seats(map.get(name));
+                        // 1 to print out
+                        plane.getPlane(1);
+                    }
+
                     break;
                 
                 // option used to store the input flight
@@ -77,6 +77,10 @@ public class Voos {
                         // store the input infp into the main map
                         String flight_code = input.split(" ")[1];
                         List<String> rest = new ArrayList<>();
+                        if(map.get(flight_code) != null){
+                            System.err.println("Flight already created");
+                            break;
+                        }
                         // if it has executive
                         if(input.split(" ").length == 4){ 
                             if(input.split(" ")[2].contains("x") && input.split(" ")[3].contains("x")){
@@ -96,7 +100,11 @@ public class Voos {
                                 System.err.println("Wrong arguments\n");
                                 System.out.println(helpMessage());
                             }
+                        } else {
+                            System.err.println("Something went wrong. Please input the correct number of argumants");
                         }
+                        System.out.println("New flight was created");
+
                     // something went wrong with the info put
                     } catch (Exception e) {
                         System.err.println("Wrong arguments\n");
@@ -111,7 +119,7 @@ public class Voos {
                         if(input.split(" ").length != 4){
                             System.err.println("Wrong arguments\n");
                             System.out.println(helpMessage());
-                            return;
+                            break;
                         }
                         // reads the input and gets the Type and Num of seats to put
                         String flight_code = input.split(" ")[1];
@@ -163,17 +171,22 @@ public class Voos {
                     }
                     break;
 
-                // option used to cancel a flight
+                // option used to cancel a reservation
                 case "C":
                     try {
-                        // removes the flight if it is in the main map
-                        if(map.get(input.split(" ")[1]) != null)
-                            map.remove(input.split(" ")[1]);
-                        // flight code does not exit
-                        else
-                            System.out.println("Flight not found");
-                    // something went wrong
-                    } catch (Exception e) {
+                        String flight_code = input.split(" ")[1].split(":")[0];
+                        for(String s : map.get(flight_code))
+                            System.out.println(s);
+                        int reservation_code = Integer.parseInt(input.split(" ")[1].split(":")[1]);
+                        if(map.get(flight_code).get(2).contains("x")){ // means that this flight has executive seats
+                            map.get(flight_code).remove(2 + reservation_code);
+                        }
+                        else{
+                            map.get(flight_code).remove(1 + reservation_code);
+                        }
+                        System.out.println("Successful cancelation. Reservation number: " + reservation_code + " was removed from flight " + flight_code);
+
+                    } catch (IndexOutOfBoundsException | NumberFormatException e) {
                         System.err.println("Wrong arguments\n");
                         System.out.println(helpMessage());
                     }
@@ -201,10 +214,10 @@ public class Voos {
         return "Valid Options:\n"+
                "H -> option menu\n"+
                "I filename -> Reads the file to get the flight information\n"+
-               "M flight_code -> Shows the map of reserved seats"+
+               "M flight_code -> Shows the map of reserved seats\n"+
                "F flight_code num_seats_executive num_seats_tourist -> New flight with determined code and seats\n"+
                "R flight_code class number_seats -> New flight reservation\n"+
-               "C reservation_code -> cancels the flight\n"+
+               "C flight_code:reservation_code -> cancels a reservation\n"+
                "Q -> terminates the program";
     }
 }
