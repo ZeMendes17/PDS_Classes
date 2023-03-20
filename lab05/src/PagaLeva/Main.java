@@ -1,4 +1,4 @@
-package lab05.PagaLeva;
+package src.PagaLeva;
 
 public class Main {
     public static void main(String[] args) {
