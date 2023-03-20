@@ -1,3 +1,3 @@
 # Aula05 - Notes
 
-to do
+1, 2 and 3
