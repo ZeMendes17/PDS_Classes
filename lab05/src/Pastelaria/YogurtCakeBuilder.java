@@ -1,5 +1,6 @@
 package src.Pastelaria;
 
+// Builder designed for yougurt Cakes --> methods done to obtain a yougurt Cake as requested
 public class YogurtCakeBuilder extends CakeBuilderAbstract {
     @Override
     public void addCreamLayer() {

@@ -30,8 +30,10 @@ public class Cake {
     public Topping getTopping() { return topping; }
     public String getMessage() { return message; }
 
+    // method to print Cake out as intended
     @Override
     public String toString(){
+        // if the number of layers was not inserted
         if (numCakeLayers == 1) {
             return cakeLayer + " cake with 1 layers, topped with " + topLayerCream + " cream and " + topping + ". Message says: " + '"' + message + '"' + ".";
         }

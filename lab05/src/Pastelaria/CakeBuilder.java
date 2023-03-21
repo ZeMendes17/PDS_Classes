@@ -1,5 +1,6 @@
 package src.Pastelaria;
 
+// interface for a CakeBuilder, methods to create the cake defined
 public interface CakeBuilder {
     public void setCakeShape(Shape shape);
     public void addCakeLayer();

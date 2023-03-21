@@ -1,5 +1,6 @@
 package src.Pastelaria;
 
+// abstract builder defining abstract methids for the Cake creation
 public abstract class CakeBuilderAbstract implements CakeBuilder {
     protected Cake cake = new Cake();
 

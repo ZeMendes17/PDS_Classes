@@ -1,5 +1,6 @@
 package src.Pastelaria;
 
+// main class given --> this is where everything is tested
 public class Main {
     public static void main(String[] args) {
 

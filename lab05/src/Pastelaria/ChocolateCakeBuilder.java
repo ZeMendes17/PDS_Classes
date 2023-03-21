@@ -1,5 +1,6 @@
 package src.Pastelaria;
 
+// Builder designed for chocolateCakes --> methods done to obtain a Chocolate Cake as requested
 public class ChocolateCakeBuilder extends CakeBuilderAbstract {
 
     @Override
