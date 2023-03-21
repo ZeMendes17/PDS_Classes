@@ -15,7 +15,7 @@ public class Main {
         cakeMaster.setCakeBuilder(sponge);
         cakeMaster.createCake(Shape.Square, 2, "Well done");// squared, 2 layers
         cake = cakeMaster.getCake();System.out.println("Your cake is ready: "+ cake);
-        
+
         CakeBuilderAbstract yogurt = new YogurtCakeBuilder();
         cakeMaster.setCakeBuilder(yogurt);
         cakeMaster.createCake(3, "The best");// 3 cake layers
