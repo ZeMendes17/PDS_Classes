@@ -1,5 +1,6 @@
 package src.Movie;
 
+// class used to define a place to be used in the Movie class
 public class Place {
     String country;
     String district;

@@ -1,6 +1,6 @@
 package src.Pastelaria;
 
-// Builder designed for sponge Cakes --> methods done to obtain a Chocolate Cake as requested
+// Builder designed for sponge Cakes --> methods done to obtain a sponge Cake as requested
 public class SpongeCakeBuilder extends CakeBuilderAbstract {
 
     @Override
