@@ -1,0 +1,11 @@
+Java Calendar Class Review
+
+    This class has 2 Contructors, one without arguments and another one that receives
+2 arguments, TimeZone zone and Local eLocale. Both are "protected" meaning that
+they can only be used inside the class (cannot be accessed outside of this).
+The First one creates a normal Calendar and the second one a Calender in a specific
+time zone and locale. 
+    Just like a Factory method, other methods are used to reach outside the class.
+To create a new Calendar it is used the createCalendar method which prevents the user
+from using the "new" operator, considered harmful.
+    With this review, we concluded that this code uses a Factory Design Pattern.

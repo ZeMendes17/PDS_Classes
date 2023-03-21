@@ -3,7 +3,7 @@
 ```
 To  compile and run JogoDoGalo:
 compile: javac src/Jogo_do_galo/*.java
-run: java src.Jogo_do_galo/JGaloq
+run: java src.Jogo_do_galo/JGalo
 ```
 
 ```
