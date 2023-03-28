@@ -1,3 +1,4 @@
+package Ex1;
 public class Adapter implements AdapterInterface{
     private AdapterDB DBadaptee;
     private AdapterRegistos RegistosAdaptee;

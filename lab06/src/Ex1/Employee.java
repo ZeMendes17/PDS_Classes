@@ -1,3 +1,4 @@
+package Ex1;
 //package src;
 
 // Sweets

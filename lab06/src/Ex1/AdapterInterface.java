@@ -1,3 +1,4 @@
+package Ex1;
 public interface AdapterInterface {
     public void insere(Empregado e);
     public void remove(int codigo);

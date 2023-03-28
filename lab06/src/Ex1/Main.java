@@ -1,3 +1,4 @@
+package Ex1;
 // tests each part
 import java.util.List;
 
