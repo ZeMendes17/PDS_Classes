@@ -1,6 +1,8 @@
-package src;
+package Ex1;
+// package src;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class Registos {
     // Data elements
@@ -15,10 +17,11 @@ class Registos {
     }
     
     public void remove( int codigo ) { 
-        for(Empregado e : empregados) {
-            if(e.codigo() == codigo)
-                empregados.remove(e);
-        }
+        // for(Empregado e : empregados) {
+        //     if(e.codigo() == codigo)
+        //         empregados.remove(e);
+        // }
+        empregados.removeIf(e -> (e.codigo() == codigo));
     }
 
     public boolean isEmpregado( int codigo ) { 

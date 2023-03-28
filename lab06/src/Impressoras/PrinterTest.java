@@ -1,4 +1,4 @@
-package src.Impressoras;
+package Impressoras;
 
 import java.util.ArrayList;
 import java.util.List;
