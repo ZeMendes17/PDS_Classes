@@ -1,5 +1,5 @@
 //package src;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.Vector;
 
 
@@ -23,11 +23,14 @@ class Database {
 
     public  void    deleteEmployee(long emp_num) {
         // Code to delete employee
-        employees.remove(emp_num);
+        employees.removeIf(e -> (e.getEmpNum() == emp_num));
     }
 
     public  Employee[] getAllEmployees() {
         // Code to retrieve collection
         return employees.toArray(new Employee[employees.size()]);
     }
+
+	public void removeIf(Object object) {
+	}
 }
