@@ -1,10 +1,10 @@
 package src.ProcessadorDeTexto;
 
-public class Decorator implements ReaderInterface {
+abstract class TextFilter implements ReaderInterface {
     protected ReaderInterface r;
 
     // constructor
-    public Decorator(ReaderInterface r){
+    public TextFilter(ReaderInterface r){
         this.r = r;
     }
     
