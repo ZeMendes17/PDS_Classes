@@ -1,4 +1,4 @@
-package Impressoras;
+package Ex3;
 
 import java.util.ArrayList;
 import java.util.List;
