@@ -22,9 +22,9 @@ public class TextFileReader implements ReaderInterface {
     // interface methods
     @Override
     public boolean hasNext() {
+
         try {
             Scanner sc = new Scanner(file);
-
             for (int i = 0; i < this.currentParagraph; i++) {
                 // reads to the paragraph where we were
                 sc.nextLine();

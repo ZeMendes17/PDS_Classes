@@ -1,7 +1,6 @@
 package src.ProcessadorDeTexto;
 
 class CapitalizationFilter extends TextFilter {
-    ReaderInterface textReader;
 
     // constructor
     public CapitalizationFilter(ReaderInterface textReader) {
@@ -12,23 +11,32 @@ class CapitalizationFilter extends TextFilter {
 
     @Override
     public boolean hasNext() {
-        return textReader.hasNext();
+        return super.hasNext();
     }
 
     @Override
     public String next() {
-        String paragraph = textReader.next();
-        String[] words = paragraph.split("\\W+");
-        StringBuilder result = new StringBuilder();
+        if(super.hasNext()){
+            String[] palavras = super.next().split(" ");
+            String palavra;
+            for(int i = 0; i < palavras.length; i++){
+                palavra = palavras[i];
 
-        // capitalize the first letter and the last letter of each word
-        for (String word : words) {
-            if (word.length() > 0) {
-                String capitalized = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
-                result.append(capitalized);
+                if(i == 0){
+                    palavra = String.valueOf(Character.toUpperCase(palavra.charAt(0)) + palavra.substring(1, palavra.length()));
+                }
+                if(i == palavras.length -1){
+                    palavra = String.valueOf(palavra.substring(0, palavra.length()-1) + Character.toUpperCase(palavra.length()-1));
+                }
+                if(i != 0 && i != palavras.length-1){
+                    palavra = palavra.toLowerCase();
+                }
+                palavras[i] = palavra;
             }
-            result.append(" ");
+
+            return String.join(" ", palavras);
+        } else {
+            return null;
         }
-        return result.toString().trim();
     }
 }

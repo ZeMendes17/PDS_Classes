@@ -1,27 +1,42 @@
 package src.ProcessadorDeTexto;
 
-import java.util.regex.Pattern;
-
 public class TermFilter extends TextFilter {
-    private Pattern pattern;
-    ReaderInterface textReader;
+    private int wordsRead;
+    private String[] paragraph = null;
 
     // constructor
     public TermFilter(ReaderInterface textReader) {
         super(textReader);
-        pattern = Pattern.compile("\\W+");
+        this.wordsRead = 0;
     }
 
     // interface methods
-    @Override
     public boolean hasNext() {
-        return textReader.hasNext();
+        if(super.hasNext()){
+            return true;
+        } else if(paragraph != null && wordsRead < paragraph.length){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     @Override
     public String next() {
         // Separate words with a single space
-        String paragraph = textReader.next();
-        return pattern.matcher(paragraph).replaceAll(" ");
+        if(!hasNext()){
+            return null;
+        }
+
+        if(super.hasNext()){ // first word
+            this.paragraph = super.next().split(" ");
+            this.wordsRead = 1;
+            return paragraph[0];
+        } else if (paragraph != null && wordsRead < paragraph.length){ // its not the first word, will return the next
+            this.wordsRead++;
+            return paragraph[wordsRead-1];
+        } else {
+            return null;
+        }
     }
 }

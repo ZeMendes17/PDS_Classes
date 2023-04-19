@@ -1,27 +1,21 @@
 package src.ProcessadorDeTexto;
 
-import java.util.regex.Pattern;
+import java.text.Normalizer;;
 
 class NormalizationFilter extends TextFilter {
-    private Pattern pattern;
-    ReaderInterface textReader;
 
     // constructor
     public NormalizationFilter(ReaderInterface textReader) {
         super(textReader);
-        pattern = Pattern.compile("[^\\p{ASCII}]+");
     }
 
     // interface methods
-    @Override
-    public boolean hasNext() {
-        return textReader.hasNext();
-    }
-
-    @Override
     public String next() {
         // Remove all accents from the text
-        String paragraph = textReader.next();
-        return pattern.matcher(paragraph).replaceAll("");
+        String paragraph = super.next();
+        paragraph = Normalizer.normalize(paragraph, Normalizer.Form.NFKD);
+        paragraph = paragraph.replaceAll("[^\\p{ASCII}]", "");
+        paragraph = paragraph.replaceAll("[.!?\\-,]", "");
+        return paragraph;
     }
 }
