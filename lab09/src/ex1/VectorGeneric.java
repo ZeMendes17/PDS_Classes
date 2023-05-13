@@ -1,7 +1,10 @@
+
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.ListIterator;
 
-public class VectorGeneric<T> {
+public class VectorGeneric<T> implements Iterable<T>{
 	private T[] vec;		
 	private int nElem;	      
 	private final static int ALLOC = 50;   
@@ -51,28 +54,40 @@ public class VectorGeneric<T> {
 		return (T) vec[i];
 	}
 
+	@Override
+    public Iterator<T> iterator() {
+        return new VectorIterator();
+    }
 
 
+	public ListIterator<T> listIterator() {
+        return new VectorListIterator();
+    }
+
+	public ListIterator<T> listIterator(int index) {
+        if (index < 0 || index >= nElem)
+            throw new IndexOutOfBoundsException("Index: " + index);
+        return new VectorListIterator(index);
+    }
 
 
+	private class VectorIterator implements Iterator<T> {
 
-
-
-	private class VectorIterator<K> implements Iterator<K> {
-
-        private int index;
+        protected int index1;
 
         VectorIterator() {
-			index = 0;
+			index1 = 0;
 		}
 
+		@Override
         public boolean hasNext() {
-			return (index < nElem);
+			return (index1 < nElem);
 		}
-    
-        public K next() {
+      
+		@Override
+        public T next() {
             if (hasNext()){
-                return(K)VectorGeneric.this.vec[index++];
+                return(T)VectorGeneric.this.vec[index1++];
 			}
             throw new NoSuchElementException("only " + nElem + " elements");
         }
@@ -82,4 +97,56 @@ public class VectorGeneric<T> {
         }
     
     }
+
+	private class VectorListIterator extends VectorIterator implements ListIterator<T> {
+        public VectorListIterator() {
+            super();
+        }
+
+        public VectorListIterator(int index) {
+            super();
+            if (index < 0 || index > nElem)
+                throw new IndexOutOfBoundsException("Index: " + index);
+        	index1 = index;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return index1 > 0;
+        }
+
+        @Override
+        public T previous() {
+            if (!hasPrevious())
+                throw new NoSuchElementException();
+            return (T) vec[--index1];
+        }
+
+        @Override
+        public int nextIndex() {
+            return index1;
+        }
+
+        @Override
+        public int previousIndex() {
+            return index1 - 1;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException("Operacao nao suportada! (remove)");
+        }
+
+        @Override
+        public void set(T e) {
+            if (index1 < 0 || index1 >= nElem)
+                throw new IllegalStateException();
+            vec[index1] = e;
+        }
+
+        @Override
+        public void add(T e) {
+            throw new UnsupportedOperationException("Operacao nao suportada! (add))");
+        }
+	}
 }
