@@ -1,3 +1,5 @@
+package ex1;
+
 import java.util.ListIterator;
 import java.util.Iterator;
 
@@ -28,9 +30,14 @@ public class Test {
         }
 
         System.out.println("\nVector size before removing: " + vector.totalElem());
-        iterator1.remove(); // Removing element "Antonio"
-        iterator2.next(); // Moving iterator2 to the next element "Maria"
-        iterator2.remove(); // Removing element "Maria"
+        if (iterator1.hasNext())
+            iterator1.next();
+        if (iterator2.hasPrevious())
+            iterator2.previous();
+        if(iterator2.hasNext())
+            iterator2.next();
+        iterator2.previousIndex();
+        iterator2.nextIndex();
         System.out.println("Vector size after removing: " + vector.totalElem());
 
         System.out.println("\nVector elements after removal:");

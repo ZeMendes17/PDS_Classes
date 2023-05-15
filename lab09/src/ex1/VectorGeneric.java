@@ -1,4 +1,4 @@
-
+package ex1;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -98,13 +98,15 @@ public class VectorGeneric<T> implements Iterable<T>{
     
     }
 
-	private class VectorListIterator extends VectorIterator implements ListIterator<T> {
+	private class VectorListIterator implements ListIterator<T> {
+
+        protected int index1;
+        
         public VectorListIterator() {
-            super();
+            index1 = 0;
         }
 
         public VectorListIterator(int index) {
-            super();
             if (index < 0 || index > nElem)
                 throw new IndexOutOfBoundsException("Index: " + index);
         	index1 = index;
@@ -119,7 +121,7 @@ public class VectorGeneric<T> implements Iterable<T>{
         public T previous() {
             if (!hasPrevious())
                 throw new NoSuchElementException();
-            return (T) vec[--index1];
+                return(T)VectorGeneric.this.vec[index1--];
         }
 
         @Override
@@ -139,14 +141,25 @@ public class VectorGeneric<T> implements Iterable<T>{
 
         @Override
         public void set(T e) {
-            if (index1 < 0 || index1 >= nElem)
-                throw new IllegalStateException();
-            vec[index1] = e;
+            throw new UnsupportedOperationException("Operacao nao suportada! (remove)");
         }
 
         @Override
         public void add(T e) {
             throw new UnsupportedOperationException("Operacao nao suportada! (add))");
+        }
+
+        @Override
+        public boolean hasNext() {
+            return (index1 < nElem);
+        }
+
+        @Override
+        public T next() {
+            if (hasNext()){
+                return(T)VectorGeneric.this.vec[index1++];
+			}
+            throw new NoSuchElementException("only " + nElem + " elements");
         }
 	}
 }
