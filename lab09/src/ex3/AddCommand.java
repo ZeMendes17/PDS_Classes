@@ -2,20 +2,20 @@ package ex3;
 
 import java.util.Collection;
 
-public class AddCommand<E> implements CommandInterface {
-    private final Collection<E> collection;
-    private final E element;
+public class AddCommand<E> implements CommandInterface<E> {
+    Collection<E> storage;
+    private E element;
 
-    public AddCommand(Collection<E> collection, E element) {
-        this.collection = collection;
-        this.element = element;
+    public AddCommand(Collection<E> storage) {
+        this.storage = storage;
     }
 
-    public void execute() {
-        collection.add(element);
+    public void execute(E elem) {
+        storage.add(elem);
+        this.element = elem;
     }
 
     public void undo() {
-        collection.remove(element);
+        storage.remove(element);
     }
 }

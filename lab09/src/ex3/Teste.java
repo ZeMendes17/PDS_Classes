@@ -5,29 +5,50 @@ import java.util.Collection;
 
 public class Teste {
     public static void main(String[] args) {
-        // Criar uma coleção
-        Collection<String> collection = new ArrayList<>();
 
-        // Crrar um gestor de comandos
-        CommandManager commandManager = new CommandManager();
+        RemoteControl<String> control = new RemoteControl<>();
+        Collection<String> storage = new ArrayList<>();
 
-        // Adicionar e remover elementos da coleção
-        CommandInterface addCommand1 = new AddCommand<>(collection, "Element 1");
-        commandManager.executeCommand(addCommand1);
+        CommandInterface<String> add = new AddCommand<String>(storage);
+        CommandInterface<String> remove = new RemoveCommand<String>(storage);
+        
+        System.out.println("Before adding or removing:");
+        for(String s : storage) {
+            System.out.println("\t" + s);
+        }
 
-        CommandInterface addCommand2 = new AddCommand<>(collection, "Element 2");
-        commandManager.executeCommand(addCommand2);
+        // add 2 elements
+        control.setCommand(add);
+        control.execButton("Hello");
+        control.execButton("World");
+        control.execButton("Tudo");
+        control.execButton("Bem?");
+        control.execButton("OLAAAAAAAA");
 
-        CommandInterface removeCommand = new RemoveCommand<>(collection, "Element 1");
-        commandManager.executeCommand(removeCommand);
+        System.out.println("Added 5 elements");
+        for(String s : storage) {
+            System.out.println("\t" + s);
+        }
 
-        // Print (should print "Element 2")
-        System.out.println("Collection: " + collection);
+        control.undoButton();
+        System.out.println("Pressed UNDO Button");
+        for(String s : storage) {
+            System.out.println("\t" + s);
+        }
 
-        // Undo the last command (remove "Element 1", ou seja, adicionar "Element 1")
-        commandManager.undo();
+        control.setCommand(remove);
+        control.execButton("Tudo");
+        control.execButton("World");
+        System.out.println("Removed 2 elements");
+        for(String s : storage) {
+            System.out.println("\t" + s);
+        }
 
-        // Print the collection after undo (Should print "Element 1" and "Element 2")
-        System.out.println("Collection after undo: " + collection);
+        control.undoButton();
+        System.out.println("Pressed UNDO Button");
+        for(String s : storage) {
+            System.out.println("\t" + s);
+        }
     }
+
 }
