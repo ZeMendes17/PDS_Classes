@@ -69,7 +69,7 @@ public class Produto {
         this.description = description;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
