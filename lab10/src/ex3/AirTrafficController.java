@@ -5,6 +5,7 @@ import java.util.List;
 
 public class AirTrafficController {
     private List<Aircraft> aircrafts;
+    private static boolean isClearToLand = true;
 
     public AirTrafficController() {
         this.aircrafts = new ArrayList<>();
@@ -15,13 +16,12 @@ public class AirTrafficController {
     }
 
     public void requestToLand(Aircraft aircraft) {
-        boolean isClearToLand = true;
 
         // Aqui seriam as condições de aterragem, mas acho que não é preciso ir tao profundo assim.
         // É aqui que dá erro não sei bem porque
         if (isClearToLand) {
             System.out.println(aircraft.name + " has been granted permission to land.");
-            aircraft.land();
+            System.out.println(aircraft.name + " has landed!");
             isClearToLand = false;
         } else {
             System.out.println(aircraft.name + " has been denied permission to land at the moment.");

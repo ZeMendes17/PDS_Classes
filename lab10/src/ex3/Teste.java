@@ -18,5 +18,7 @@ public class Teste {
 
         airplane1.land();
         airplane2.land();
+        System.out.println("Let's try again...");
+        airplane2.land();
     }
 }
