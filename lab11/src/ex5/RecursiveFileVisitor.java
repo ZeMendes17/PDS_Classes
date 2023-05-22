@@ -10,7 +10,7 @@ public class RecursiveFileVisitor implements FileElementVisitor {
     private long totalFileSize = 0;
     private long totalDirectorySize = 0;
 
-    public RecursiveFileVisitor(FileElementVisitor elementVisitor) {
+    RecursiveFileVisitor(FileElementVisitor elementVisitor) {
         this.elementVisitor = elementVisitor;
     }
 

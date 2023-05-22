@@ -6,7 +6,7 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
 
-class SizeVisitor implements FileElementVisitor {
+public class SizeVisitor implements FileElementVisitor {
     private long totalFileSize;
     private long totalDirectorySize;
 
