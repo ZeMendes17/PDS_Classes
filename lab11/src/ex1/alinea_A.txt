@@ -1,0 +1,5 @@
+Vamos aplicar o padrao de strategy de modo a cumprir os requisitos do problema.
+A nossa revista eletronica ira apresentar uma interface (strategy) onde vai-se
+"implementar" o metodo sort(), que recebe como argumento uma lista de Telemóveis a ordenar.
+De seguida vamos ter varias classes que irao implementar essa interface e varios tipos de sort como, merge sort,
+bubble sort e insertion sort, ordenando assim os itens la lista.
