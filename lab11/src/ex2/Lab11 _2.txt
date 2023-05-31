@@ -1,0 +1,19 @@
+JAVA.IO.INPUTSTREAM
+- Nesta classe abstrata java, identificamos que o padrão Template Method é utilizado na 
+instância do read.
+De facto, temos uma chamada abstrata do read generalizado, seguida de um read especializado que 
+chama o read concreto.
+
+
+JAVA.IO.OUTPUTSTREAM 
+- Nesta classe abstrata java, identificamos que o padrão Template Method é utilizado na 
+instância do write.
+De facto, temos uma chamada abstrata do write generalizado, seguida de um write especializado que 
+chama o write que realiza de facto o write.
+
+
+JAVA.IO.READER
+- Nesta classe abstrata java, identificamos que o padrão Template Method é utilizado na 
+instância do read.
+De facto, temos uma chamada abstrata do read generalizado, seguida de um read especializado que 
+chama o read concreto.
